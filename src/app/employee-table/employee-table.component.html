@@ -1,0 +1,102 @@
+<div class="table-background">
+  <div class="table-wrapper">
+
+    <h1 class="title">Employee Management System</h1>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+
+      <!-- Index -->
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef> SNO </th>
+        <td mat-cell *matCellDef="let emp; let i = index"> {{ i + 1 }} </td>
+      </ng-container>
+
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let emp">
+          <mat-form-field *ngIf="emp.isEditing" appearance="fill">
+            <input matInput [(ngModel)]="emp.name" placeholder="Name" />
+          </mat-form-field>
+          <span *ngIf="!emp.isEditing">{{ emp.name }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Email -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let emp">
+          <mat-form-field *ngIf="emp.isEditing" appearance="fill">
+            <input matInput [(ngModel)]="emp.email" placeholder="Email" />
+          </mat-form-field>
+          <span *ngIf="!emp.isEditing">{{ emp.email }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Phone -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let emp">
+          <mat-form-field *ngIf="emp.isEditing" appearance="fill">
+            <input matInput [(ngModel)]="emp.phone" placeholder="Phone" />
+          </mat-form-field>
+          <span *ngIf="!emp.isEditing">{{ emp.phone }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Salary -->
+      <ng-container matColumnDef="salary">
+        <th mat-header-cell *matHeaderCellDef> Salary </th>
+        <td mat-cell *matCellDef="let emp">
+          <mat-form-field *ngIf="emp.isEditing" appearance="fill">
+            <input matInput type="number" [(ngModel)]="emp.salary" placeholder="Salary" />
+          </mat-form-field>
+          <span *ngIf="!emp.isEditing">{{ emp.salary }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let emp">
+          <ng-container *ngIf="emp.isEditing">
+            <button mat-button color="primary" (click)="save(emp)">Save</button>
+            <button mat-button color="warn" (click)="cancel(emp)">Cancel</button>
+          </ng-container>
+          <ng-container *ngIf="!emp.isEditing">
+            <button mat-button color="accent" (click)="onEdit(emp)">Edit</button>
+            <button mat-button color="warn" (click)="onDelete(emp.id)">Delete</button>
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Search Controls -->
+    <div class="search-controls">
+      <mat-form-field appearance="fill">
+        <mat-label>Search by Name</mat-label>
+        <input matInput [(ngModel)]="searchName" placeholder="Enter name" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="applySearch()">Search</button>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Search by Minimum Salary</mat-label>
+        <input matInput type="number" [(ngModel)]="highSalary" placeholder="Enter minimum salary" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="applyHighSalarySearch()">Search Salary</button>
+
+      <button mat-raised-button color="accent" (click)="onAdd()">Add Employee</button>
+    </div>
+ <ng-container *ngIf="false">
+      <app-not-found-dialog></app-not-found-dialog>
+    </ng-container>
+
+
+
+
+
+  </div>
+</div>
