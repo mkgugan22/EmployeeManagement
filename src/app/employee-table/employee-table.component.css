@@ -1,0 +1,87 @@
+:host {
+  display: block;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top left, #d4dde7, #c8d0e7, #c0cbe4);
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Layout container */
+.table-background {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Glass-like wrapper */
+.table-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 1200px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Section title */
+.title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+/* Flex container for search + buttons */
+.search-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+/* Style form fields */
+mat-form-field {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+/* Button adjustments */
+button[mat-raised-button] {
+  min-width: 120px;
+  height: 40px;
+  font-weight: 500;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease-in-out, transform 0.2s;
+}
+
+button[mat-raised-button]:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .search-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button[mat-raised-button] {
+    width: 100%;
+  }
+}
