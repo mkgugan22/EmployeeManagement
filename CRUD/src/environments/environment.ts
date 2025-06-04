@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://crudapplication.runasp.net/api/employees' // Development API URL
+  apiBaseUrl: 'https://crudbackend.runasp.net/api' // Development API URL
 };
 
